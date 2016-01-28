@@ -11,13 +11,12 @@
         <h2>Lo mejor del cine</h2>
       </hgroup>
     </header>
-    <h3>Película de la semana:</h3>
-    <p><%= PELICULA_DE_LA_SEMANA %></p>
-    <p>Reserva tus entradas</p>
-    <div id="main">
+    
+    <div id="container">
       <%= yield %>
     </div>
     <footer>
+      <h3>Película de la semana: <%= PELICULA_DE_LA_SEMANA %></h3>
       <p>Creado por <a href="#">Camilo Ruiz</a></p>
     </footer>
   </body>
