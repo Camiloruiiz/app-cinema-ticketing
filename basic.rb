@@ -16,6 +16,8 @@ get'/compraform' do
 end
 
 post '/confirmation' do
+  require 'socket'
+  hostname = Socket.gethostname
 
   name = params[:nombre]
   apellido = params[:apellido]
@@ -38,7 +40,7 @@ post '/confirmation' do
     }
   }
   
-  Pony.mail(:subject=> 'Confirmación compra de Ticket ' + name, :to => correo, :body => 'Ingresa al siguiente link: http://127.0.0.1:9393/' + name.gsub(/\s/,'-') + '/' + listfilms.gsub(/\s/,'-') + '/' + id.to_s)
+  Pony.mail(:subject=> 'Confirmación compra de Ticket ' + name, :to => correo, :body => 'Ingresa al siguiente link: http://' + hostname +'/' + name.gsub(/\s/,'-') + '/' + listfilms.gsub(/\s/,'-') + '/' + id.to_s)
   
   erb :confirmation , :locals => {'name' => name, 'apellido' => apellido, 'correo' => correo, 'telefono' => telefono, 'film' => listfilms}
 end
