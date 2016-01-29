@@ -6,6 +6,9 @@ SITE_TITLE = "Cinelandia"
 SITE_DESCRIPTION = "Las mejores Películas del mundo mundial."
 PELICULA_DE_LA_SEMANA = "Inside Out"
 
+id = 0
+
+db = Hash.new
 
 get '/' do
   erb :home
@@ -19,11 +22,15 @@ post '/confirmation' do
 
   @hostname = request.host
   
-  name = params[:nombre]
-  apellido = params[:apellido]
-  correo = params[:correo]
-  telefono = params[:telefono]
-  listfilms = params[:listfilms]
+  db = {
+    :name => params[:nombre]
+    :apellido => params[:apellido]
+    :correo => params[:correo]
+    :telefono => params[:telefono]
+    :listfilms => params[:listfilms]
+    }
+
+ 
   id = 165
   
   Pony.options = {
@@ -40,9 +47,9 @@ post '/confirmation' do
     }
   }
   
-  Pony.mail(:subject=> 'Confirmación compra de Ticket ' + name, :to => correo, :body => 'Ingresa al siguiente link: http://' + @hostname +'/' + name.gsub(/\s/,'-') + '/' + listfilms.gsub(/\s/,'-') + '/' + id.to_s)
+  Pony.mail(:subject=> 'Confirmación compra de Ticket ' + db[:name], :to => db[:correo], :body => 'Ingresa al siguiente link: http://' + @hostname +'/' + db[:name].gsub(/\s/,'-') + '/' + db[:listfilms].gsub(/\s/,'-') + '/' + db[:id].to_s)
   
-  erb :confirmation , :locals => {'name' => name, 'apellido' => apellido, 'correo' => correo, 'telefono' => telefono, 'film' => listfilms}
+  erb :confirmation , :locals => {'name' => db[:name], 'apellido' => db[:apellido], 'correo' => db[:correo], 'telefono' => db[:telefono], 'film' => db[:listfilms]}
 end
 
 get '/ticket' do
