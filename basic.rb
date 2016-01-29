@@ -23,10 +23,10 @@ post '/confirmation' do
   @hostname = request.host
   
   db = {
-    :name => params[:nombre]
-    :apellido => params[:apellido]
-    :correo => params[:correo]
-    :telefono => params[:telefono]
+    :name => params[:nombre],
+    :apellido => params[:apellido],
+    :correo => params[:correo],
+    :telefono => params[:telefono],
     :listfilms => params[:listfilms]
     }
 
