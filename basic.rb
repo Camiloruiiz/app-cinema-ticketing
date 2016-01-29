@@ -16,8 +16,8 @@ get'/compraform' do
 end
 
 post '/confirmation' do
-  require 'socket'
-  hostname = Socket.gethostname
+  require 'uri'
+  hostname = uri.host
 
   name = params[:nombre]
   apellido = params[:apellido]
