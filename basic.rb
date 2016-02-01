@@ -6,15 +6,15 @@ SITE_TITLE = "Cinelandia"
 SITE_DESCRIPTION = "Las mejores Películas del mundo mundial."
 PELICULA_DE_LA_SEMANA = "Inside Out"
 
-id = 0
-
 db = Hash.new
+id = Hash.new
 
 get '/' do
   erb :home
 end 
 
 get'/compraform' do
+  
   erb :compraform
 end
 
@@ -29,10 +29,10 @@ post '/confirmation' do
     :telefono => params[:telefono],
     :listfilms => params[:listfilms]
     }
-
- 
-  id = 165
-  
+    
+    a = id.map{|k,v| k.max+1}
+    id[a] = db
+    
   Pony.options = {
     :from => 'noreply@esquemacreativo.com',
     :via => :smtp,
@@ -48,7 +48,7 @@ post '/confirmation' do
   }
   
 
-  Pony.mail(:subject=> 'Confirmación compra de Ticket ' + db[:name], :to => db[:correo], :body => 'Ingresa al siguiente link: http://' + @hostname +'/' + db[:name].gsub(/\s/,'-') + '/' + db[:listfilms].gsub(/\s/,'-') + '/' + id.to_s)
+  Pony.mail(:subject=> 'Confirmación compra de Ticket ' + db[:name], :to => db[:correo], :body => 'Ingresa al siguiente link: http://' + @hostname +'/' + db[:name].gsub(/\s/,'-') + '/' + db[:listfilms].gsub(/\s/,'-') + '/' + a.to_i)
 
   erb :confirmation , :locals => {'name' => db[:name], 'apellido' => db[:apellido], 'correo' => db[:correo], 'telefono' => db[:telefono], 'film' => db[:listfilms]}
 end
