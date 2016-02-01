@@ -28,7 +28,6 @@ configure :production do
 end
   
 get '/' do
-  @greeting = settings.greeting
   erb :home
 end 
 
