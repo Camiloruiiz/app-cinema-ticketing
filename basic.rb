@@ -2,7 +2,7 @@ require 'rubygems'
 require 'sinatra'
 require 'pony'
 
-class Ticket
+class TicketPurchase
   @@records = {}
   
   def initialize 
@@ -61,26 +61,25 @@ class App < Sinatra::Base
   end
   
   post '/confirmation' do
-    ticket = params
     
-    generate = Ticket.new 
+    ticket = TicketPurchase.new 
     
-    id = generate.get_id
+    id = ticket.get_id
     
-    generate.save_in_db(ticket)
+    ticket.save_in_db(params)
     
     hostname = request.host_with_port
     
-    generate.send_mail(ticket, id, hostname)
+    ticket.send_mail(params, id, hostname)
     
-    erb :confirmation , :locals => {'ticket' => ticket}
+    erb :confirmation , :locals => {'ticket' => params}
   end
   
   get '/ticket/:id' do
-    erb :ticket, :locals => {'id' => params[:id], 'records' => Ticket.dbs}
+    erb :ticket, :locals => {'id' => params[:id], 'records' => TicketPurchase.dbs}
   end
   
   after do
-    puts Ticket.dbs
+    puts TicketPurchase.dbs
   end
 end
