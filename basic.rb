@@ -2,12 +2,14 @@ require 'rubygems'
 require 'sinatra'
 require 'pony'
 
-SITE_TITLE = "Cinelandia"
-SITE_DESCRIPTION = "Lo mejor del Cine"
-PELICULA_DE_LA_SEMANA = "Inside Out"
+
 
 class App < Sinatra::Base
   
+  SITE_TITLE = "Cinelandia"
+  SITE_DESCRIPTION = "Lo mejor del Cine"
+  PELICULA_DE_LA_SEMANA = "Inside Out"
+
   @@records = {}
   @@records[0] = 'init' unless @@records.keys.nil?
   
