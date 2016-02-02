@@ -1,2 +1,2 @@
-require './basic'
+require './basic.rb'
 run App
