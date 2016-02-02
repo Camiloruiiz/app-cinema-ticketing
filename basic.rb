@@ -2,25 +2,41 @@ require 'rubygems'
 require 'sinatra'
 require 'pony'
 
+class Ticket
+  @@records = {}
+  
+  def initialize 
+    @@records[0] = 'init' unless @@records.keys.nil?
+  end
+  
+  def self.dbs
+    @@records
+  end
+  
+  def get_id
+    @index = @@records.keys.max + 1 
+  end
+  
+  def save_in_db(ticket)
+    @@records[@index] = ticket
+  end
+  
+  def send_mail(ticket, id , hostname)
+    Pony.mail(
+      :from => 'noreply@esquemacreativo.com', 
+      :subject=> 'Ticket purchase confirmation ' + ticket[:name], 
+      :to => ticket[:mail], 
+      :body => 'Enter the following link: http://' + hostname + '/ticket/' + id.to_s
+      )
+  end
+end
+
 class App < Sinatra::Base
   
   SITE_TITLE = "Cinelandia"
   SITE_DESCRIPTION = "The best cinema"
   FILM_OF_THE_WEEK = "Inside Out"
 
-  @@records = {}
-  @@records[0] = 'init' unless @@records.keys.nil?
-  
-  Customer = Struct.new(:name, :lastname, :mail, :phone, :list_films)
-  
-  def get_id(db)
-    @index = @@records.keys.max + 1 
-  end
-  
-  def save_in_db(db)
-    @@records[@index] = db
-  end
-  
   configure :production do
     Pony.options = {
     :via => :smtp,
@@ -45,37 +61,26 @@ class App < Sinatra::Base
   end
   
   post '/confirmation' do
-  
-    @hostname = request.host_with_port
+    ticket = params
     
-    db = Customer.new(params[:name], params[:lastname], params[:mail], params[:phone], params[:list_films]).to_h
+    generate = Ticket.new 
     
-    id = get_id(db)
-    save_in_db(db)
+    id = generate.get_id
     
-    Pony.mail(
-      :from => 'noreply@esquemacreativo.com', 
-      :subject=> 'Ticket purchase confirmation ' + db[:name], 
-      :to => db[:mail], 
-      :body => 'Enter the following link: http://' + @hostname + '/ticket/' + id.to_s
-      )
-  
-    erb :confirmation , 
-    :locals => {
-      'name' => db[:name], 
-      'lastname' => db[:lastname], 
-      'mail' => db[:mail], 
-      'phone' => db[:phone], 
-      'list_films' => db[:list_films]
-      }
+    generate.save_in_db(ticket)
+    
+    hostname = request.host_with_port
+    
+    generate.send_mail(ticket, id, hostname)
+    
+    erb :confirmation , :locals => {'ticket' => ticket}
   end
   
   get '/ticket/:id' do
-    id = params[:id]
-    erb :ticket, :locals => {'id' => id, 'records' => @@records}
+    erb :ticket, :locals => {'id' => params[:id], 'records' => Ticket.dbs}
   end
   
   after do
-    puts @@records
+    puts Ticket.dbs
   end
 end
