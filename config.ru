@@ -1,2 +1,2 @@
-require './basic.rb'
-run Sinatra::Application
+require './basic'
+run App
