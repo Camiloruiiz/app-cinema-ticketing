@@ -1,1 +1,1 @@
-web: bundle exec ruby basic.rb -p $PORT
+web: bundle exec config.ru start -p $PORT
