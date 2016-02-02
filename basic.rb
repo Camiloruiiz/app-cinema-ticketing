@@ -80,6 +80,6 @@ class App < Sinatra::Base
   end
   
   after do
-    puts @@records[1][:name]
+    puts @@records
   end
 end
