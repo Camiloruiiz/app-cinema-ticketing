@@ -2,16 +2,16 @@ require 'rubygems'
 require 'sinatra'
 require 'pony'
 
-
-
 class App < Sinatra::Base
   
   SITE_TITLE = "Cinelandia"
-  SITE_DESCRIPTION = "Lo mejor del Cine"
-  PELICULA_DE_LA_SEMANA = "Inside Out"
+  SITE_DESCRIPTION = "The best cinema"
+  FILM_OF_THE_WEEK = "Inside Out"
 
   @@records = {}
   @@records[0] = 'init' unless @@records.keys.nil?
+  
+  Customer = Struct.new(:name, :lastname, :mail, :phone, :list_films)
   
   def get_id(db)
     @index = @@records.keys.max + 1 
@@ -48,31 +48,25 @@ class App < Sinatra::Base
   
     @hostname = request.host_with_port
     
-    db = {
-      :name => params[:nombre],
-      :apellido => params[:apellido],
-      :correo => params[:correo],
-      :telefono => params[:telefono],
-      :listfilms => params[:listfilms]
-      }
+    db = Customer.new(params[:name], params[:lastname], params[:mail], params[:phone], params[:list_films]).to_h
     
     id = get_id(db)
     save_in_db(db)
     
     Pony.mail(
       :from => 'noreply@esquemacreativo.com', 
-      :subject=> 'Confirmación compra de Ticket ' + db[:name], 
-      :to => db[:correo], 
-      :body => 'Ingresa al siguiente link: http://' + @hostname + '/ticket/' + id.to_s
+      :subject=> 'Ticket purchase confirmation ' + db[:name], 
+      :to => db[:mail], 
+      :body => 'Enter the following link: http://' + @hostname + '/ticket/' + id.to_s
       )
   
     erb :confirmation , 
     :locals => {
       'name' => db[:name], 
-      'apellido' => db[:apellido], 
-      'correo' => db[:correo], 
-      'telefono' => db[:telefono], 
-      'film' => db[:listfilms]
+      'lastname' => db[:lastname], 
+      'mail' => db[:mail], 
+      'phone' => db[:phone], 
+      'list_films' => db[:list_films]
       }
   end
   
