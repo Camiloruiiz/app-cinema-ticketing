@@ -1,2 +1,2 @@
-require './basic'
-run App
+require './app/basic'
+run Application
