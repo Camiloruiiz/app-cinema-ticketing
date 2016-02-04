@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'sinatra'
 require 'pony'
 
@@ -32,7 +31,7 @@ class TicketPurchase
   end
 end
 
-class Application < Sinatra::Base
+class App < Sinatra::Base
   
   SITE_TITLE = "Cinelandia"
   SITE_DESCRIPTION = "The best cinema"
