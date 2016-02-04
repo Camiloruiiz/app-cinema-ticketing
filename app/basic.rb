@@ -33,7 +33,7 @@ end
 
 class App < Sinatra::Base
   
-  SITE_TITLE = "Cinelandia"
+  
   SITE_DESCRIPTION = "The best cinema"
   FILM_OF_THE_WEEK = "Inside Out"
 
@@ -53,15 +53,17 @@ class App < Sinatra::Base
   end
   
   get '/' do
+	@site_title = "Cinelandia"
     erb :home
   end 
   
-  get'/compraform' do
-    erb :compraform
+  get'/form' do
+	@site_title = "Form"
+    erb :form
   end
   
   post '/confirmation' do
-    
+    @site_title = "Confirmation"
     ticket = TicketPurchase.new 
     ticket.save_in_db(params)
     
@@ -73,9 +75,5 @@ class App < Sinatra::Base
   
   get '/ticket/:id' do
     erb :ticket, :locals => {'id' => params[:id], 'records' => TicketPurchase.db}
-  end
-  
-  after do
-    puts TicketPurchase.db
   end
 end
