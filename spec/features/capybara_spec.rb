@@ -1,6 +1,6 @@
 require 'spec_helper.rb'
 
-describe 'Ticketing', :type => :feature do
+describe 'Front-end ticketing Cinema', :type => :feature do
 
   it 'responds with Home page' do
     visit '/' #Arrange
