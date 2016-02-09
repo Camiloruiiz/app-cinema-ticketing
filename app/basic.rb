@@ -41,6 +41,6 @@ class App < Sinatra::Base
 
   get '/ticket/:id' do
     @site_title = "Happy Movie"
-    erb :ticket, :locals => {'id' => params[:id], 'records' => RecordsManagement.db}
+    erb :ticket, :locals => {'id' => params[:id], 'records' => RecordsManagement.all}
   end
 end
