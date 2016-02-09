@@ -1,3 +1,10 @@
+class Ticketing
+  def purchase(data, hostname)
+    id = RecordsManagement.new.save(data)
+    Notification.new.sendmail(data, id, hostname)
+  end
+end
+
 class RecordsManagement
   @@records = {}
   @@id = 0
@@ -6,7 +13,7 @@ class RecordsManagement
     @@records[0] = 'init' unless @@records.keys.nil?
   end
 
-  def self.db
+  def self.all
     @@records
   end
 
@@ -24,47 +31,13 @@ class RecordsManagement
   end
 end
 
-
-class Ticketing
-  def purchase(ticket, hostname)
-
-    id = RecordsManagement.new.save(ticket)
-
+class Notification
+  def sendmail(data, id, hostname)
     Pony.mail(
       :from => 'noreply@esquemacreativo.com',
-      :subject => 'Ticket purchase confirmation ' + ticket[:name],
-      :to => ticket[:mail],
+      :subject => 'Ticket purchase confirmation ' + data[:name],
+      :to => data[:mail],
       :body => 'Enter the following link: http://' + hostname + '/ticket/' + id.to_s
       )
   end
 end
-
-
-#class Ticketing
-#  @@records = {}
-#  @@index = 0
-#
-#  def initialize
-#    @@records[0] = 'init' unless @@records.keys.nil?
-#  end
-#
-#  def self.db
-#    @@records
-#  end
-#
-#  def get_id
-#    @@index += 1
-#  end
-#
-#  def purchase(ticket, hostname)
-#
-#    @@records[get_id] = ticket
-#
-#    Pony.mail(
-#      :from => 'noreply@esquemacreativo.com',
-#      :subject => 'Ticket purchase confirmation ' + ticket[:name],
-#      :to => ticket[:mail],
-#      :body => 'Enter the following link: http://' + hostname + '/ticket/' + @@index.to_s
-#      )
-#  end
-#end
