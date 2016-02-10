@@ -5,7 +5,7 @@ describe 'App ticketing cinema' do
       expect(RecordsManagement.new.nil?).to eq(false)
     end
 
-    it 'the class "RecordsManagement" is initialized whit {0=>"init"}' do
+    it 'is initialized whit {0=>"init"}' do
       #Act
       RecordsManagement.new
       #Assert
