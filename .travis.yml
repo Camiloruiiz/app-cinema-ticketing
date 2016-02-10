@@ -1,3 +1,8 @@
 language: ruby
 rvm:
   - 2.3.0
+
+deploy:
+  provider: heroku
+  api_key: fd0d3259-a46c-4c94-8e71-1bdd1fa5e802
+  app: guarded-sea-22992
