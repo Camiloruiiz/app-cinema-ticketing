@@ -1,8 +1,8 @@
 language: ruby
 rvm:
-  - 2.3.0
-
+- 2.3.0
 deploy:
   provider: heroku
-  api_key: fd0d3259-a46c-4c94-8e71-1bdd1fa5e802
-  app: guarded-sea-22992
+  api_key:
+    secure: JfXlf41QIy/ZxJj/XbUUnxN/8eVlIXcR3xyk9Y7F0F0roQH2OIy1T89+qIXK2gKHU5n6JdlUlU7NPeSQ0Csy4WYHIV/alC2AYCeSW7YsYWEWp6kJoLj7rYnBSSWkGmWayKYVGNR406/fQgqu06rNWcTTKTZ7v57vZ7kPMyu3qm3gieA+BNv6x+y/4fTtfYPwRbJVLsCkmGm+5f6rh/KkmDpZX8ytEEEPy6P+kYEk9CYYKFYCbIqGIECTqyRAKRuYuEvN5TUiHfwqWQs8FyTAJdK70utxmsqktlLYpIJgJqo/WDsXduotKvjHZd6No6HhlLApt0UsSsZqos4m8sMzYP1pf8VNSsH8lO48pIuDKBG6gFvayF6G93mZiKGbdI3Su6MwqHB/XmZ3Sp9pruaQe07t0h2NKupWRUcItR4ZEXE0P0HGAFp81YHST/gCpFbkIVO3EklXk0XgyxOLT0D8cT4QDxVx1gGHE2JYcNxSQSOnWXyxafEwt7VzY/72JeC6XU9OZIvk8XhrxQw9jDgdwyy5AJs6usXJhE/hY8eQ0zaIxdc97MNsEPbi9QcatwM5nf/nq88kfOqgpRRS8ZnvVlPs9ElUPwO71v0dw+ylX4itr+O1Q9EOQLlFHIBduNhXlD4KTxCt/PuhZFVq5Ifg3/kg722jaNgIr8T3lgXnkCo=
+  app: cinema-ticketing
