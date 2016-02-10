@@ -1,3 +1,3 @@
-# Cinema Ticketing. [![BuildStatus](https://travis-ci.org/OscarCamiloRuiz/Cinema-s-tikets.svg)](https://travis-ci.org/OscarCamiloRuiz/Cinema-s-tikets)
+# Cinema Ticketing. [![Build Status](https://travis-ci.org/Camiloruiiz/app-cinema-ticketing.svg?branch=master)](https://travis-ci.org/Camiloruiiz/app-cinema-ticketing)
 ## App Coursework [Devscola.org](http://www.devscola.org/) on [Sinatra Framework](http://sinatrarb.com/)
 1. [Live Preview](https://guarded-sea-22992.herokuapp.com)
