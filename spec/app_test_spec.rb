@@ -1,18 +1,18 @@
-describe 'App generate tickets to Cinema' do
-  context 'records are kept with an incremental id' do
-    it 'the class RecordsManagement is defined' do
+describe 'App ticketing cinema' do
+  context 'class "RecordsManagement"' do
+    it 'is defined' do
       #Assert
       expect(RecordsManagement.new.nil?).to eq(false)
     end
 
-    it 'the class RecordsManagement is initialized whit {0=>"init"}' do
+    it 'the class "RecordsManagement" is initialized whit {0=>"init"}' do
       #Act
       RecordsManagement.new
       #Assert
       expect(RecordsManagement.all).to eq({0=>"init"})
     end
 
-    it 'The id should increase one by one' do
+    it 'the id should increase one by one' do
       #Arrange
       test_incremental = RecordsManagement.new
       #Assert
@@ -46,7 +46,7 @@ describe 'App generate tickets to Cinema' do
   end
 
   context 'generate notificaction' do
-    it 'the class Notification is defined' do
+    it 'the class "Notification" is defined' do
       #Assert
       expect(Notification.new.nil?).to eq(false)
     end
