@@ -1,5 +1,4 @@
 require 'capybara/rspec'
-
 require './app/basic'
 Capybara.app = App
 
