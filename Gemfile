@@ -10,5 +10,3 @@ group :test do
   gem 'capybara'
   gem 'rake'
 end
-
-NO PELEES AMA A TU HIJA
