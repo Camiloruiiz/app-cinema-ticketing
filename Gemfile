@@ -2,11 +2,8 @@
 source "https://rubygems.org"
 ruby '2.3.0'
 
-  gem "sinatra"
-
-group :development do
-  gem "pony"
-end
+gem "sinatra"
+gem "pony"
 
 group :test do
   gem 'rspec'
