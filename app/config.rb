@@ -1,3 +1,4 @@
+
 Pony.options = {
   :via => :smtp,
     :via_options => {

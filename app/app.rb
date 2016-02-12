@@ -1,40 +1,13 @@
 require 'sinatra'
 require 'pony'
+require "dotenv"
+Dotenv.load
+
 require './app/ticketing'
 require './app/config'
 
 SITE_DESCRIPTION = "The best cinema"
 FILM_OF_THE_WEEK = "Inside Out"
-
-configure :production do
-  Pony.options = {
-  :via => :smtp,
-    :via_options => {
-      :address => 'smtp.sendgrid.net',
-      :port => '587',
-      :domain => 'heroku.com',
-      :user_name => ENV['SENDGRID_USERNAME'],
-      :password => ENV['SENDGRID_PASSWORD'],
-      :authentication => :plain,
-      :enable_starttls_auto => true
-    }
-  }
-end
-
-configure :development do
-  Pony.options = {
-  :via => :smtp,
-    :via_options => {
-      :address => 'smtp.gmail.com',
-      :port => '587',
-      :domain => "localhost.localdomain",
-      :user_name => 'camilorojas@esquemacreativo.com',
-      :password => 'CRojas.92',
-      :authentication => :plain,
-      :enable_starttls_auto => true
-    }
-  }
-end
 
 get '/' do
   @site_title = "Cinelandia"
