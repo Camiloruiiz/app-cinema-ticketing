@@ -1,6 +1,0 @@
-.bundle/
-vendor/
-Gemfile.lok
-
-# Ignore application configuration
-/config/application.yml
