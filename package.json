@@ -2,7 +2,7 @@
   "name": "app-cinema-ticketing",
   "version": "1.0.0",
   "engines": {
-    "node": "5.5.0"
+    "node": "5.5.10"
   },
   "description": "App Cinema ticketing devscola on sinatra framework",
   "main": "index.js",
@@ -10,8 +10,7 @@
       "bower": "1.7.7"
   },
   "scripts": {
-    "start": "node index.js",
-    "postinstall": "bower install"
+    "postinstall": "node node_modules/bower/bin/bower install"
   },
   "author": "Camilo Ruiz",
   "license": "ISC"
