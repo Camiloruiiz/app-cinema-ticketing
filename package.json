@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "App Cinema ticketing devscola on sinatra framework",
   "main": "index.js",
+  "dependencies": {
+      "bower": "1.7.7"
+  },
   "scripts": {
     "start": "node index.js",
     "postinstall": "bower install"
