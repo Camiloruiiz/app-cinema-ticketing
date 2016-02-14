@@ -1,4 +1,3 @@
 .bundle/
 vendor/
 .env
-bower_components/

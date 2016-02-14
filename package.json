@@ -5,12 +5,9 @@
     "node": "5.5.10"
   },
   "description": "App Cinema ticketing devscola on sinatra framework",
-  "main": "index.js",
   "scripts": {
     "postinstall": "./node_modules/bower/bin/bower install"
   },
-  "author": "Camilo Ruiz",
-  "license": "ISC",
   "dependencies": {
     "bower": "^1.7.7"
   }
