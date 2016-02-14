@@ -17,7 +17,7 @@ var backgrounds = [
 
 $body.vegas({
     preload: true,
-    overlay: '/js/vegas/dist/overlays/01.png',
+    overlay: '/vendor/bower_components/vegas/dist/overlays/01.png',
     transitionDuration: 4000,
     delay: 10000,
     slides: backgrounds,

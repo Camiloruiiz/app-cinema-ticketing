@@ -4,7 +4,6 @@
   color: #fff;
   font-family: sans-serif;
 }
-
 .card {
   background: linear-gradient(to bottom, #e84c3d 0%, #e84c3d 26%, #ecedef 26%, #ecedef 100%);
   height: 11em;
@@ -13,13 +12,11 @@
   padding: 1em;
   margin-top: 100px;
 }
-
 .cardLeft {
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   width: 16em;
 }
-
 .cardRight {
   width: 6.5em;
   border-left: .18em dashed #fff;
@@ -42,7 +39,6 @@
 .cardRight:after {
   bottom: -.4em;
 }
-
 h1 {
   font-size: 1.1em;
   margin-top: 0;
@@ -50,7 +46,6 @@ h1 {
 h1 span {
   font-weight: normal;
 }
-
 .title, .name, .seat, .time {
   text-transform: uppercase;
   font-weight: normal;
@@ -64,23 +59,18 @@ h1 span {
   font-size: .7em;
   color: #a2aeae;
 }
-
 .title {
   margin: 2em 0 0 0;
 }
-
 .name, .seat {
   margin: .7em 0 0 0;
 }
-
 .time {
   margin: .7em 0 0 1em;
 }
-
 .seat, .time {
   float: left;
 }
-
 .eye {
   position: relative;
   width: 2em;
@@ -112,7 +102,6 @@ h1 span {
   left: 12px;
   top: 8px;
 }
-
 .number {
   text-align: center;
   text-transform: uppercase;
@@ -126,20 +115,21 @@ h1 span {
   display: block;
   color: #a2aeae;
 }
-
 .barcode {
   height: 2em;
   width: 0;
   margin: 1.2em 0 0 .8em;
   box-shadow: 1px 0 0 1px #343434, 5px 0 0 1px #343434, 10px 0 0 1px #343434, 11px 0 0 1px #343434, 15px 0 0 1px #343434, 18px 0 0 1px #343434, 22px 0 0 1px #343434, 23px 0 0 1px #343434, 26px 0 0 1px #343434, 30px 0 0 1px #343434, 35px 0 0 1px #343434, 37px 0 0 1px #343434, 41px 0 0 1px #343434, 44px 0 0 1px #343434, 47px 0 0 1px #343434, 51px 0 0 1px #343434, 56px 0 0 1px #343434, 59px 0 0 1px #343434, 64px 0 0 1px #343434, 68px 0 0 1px #343434, 72px 0 0 1px #343434, 74px 0 0 1px #343434, 77px 0 0 1px #343434, 81px 0 0 1px #343434;
 }
-
 .Absolute-Center {
-  margin: auto; /* Center the item vertically & horizontally */
-  position: absolute; /* Break it out of the regular flow */
-  bottom: 20px; right: 20px; /* Set the bounds in which to center it, relative to its parent/container */
+  margin: auto;
+  /* Center the item vertically & horizontally */
+  position: absolute;
+  /* Break it out of the regular flow */
+  bottom: 20px;
+  right: 20px;
+  /* Set the bounds in which to center it, relative to its parent/container */
 }
-
 .movie-of-the-week, .created-by {
   color: #fff;
   float: right;
@@ -149,11 +139,30 @@ h1 span {
   background-color: rgba(0, 0, 0, 0.64);
   padding: 15px 5px;
 }
-
 .copy-rigth .btn-primary {
   margin: 40px 0;
 }
-
 .logo-cine img {
   margin-bottom: 20px
+}
+.vegas-timer {
+  z-index: 500 !important;
+}
+.vegas-timer-progress {
+  background: #F24535;
+}
+.vegas-overlay {
+  opacity: .5;
+}
+.logo {
+  width: 500px;
+  position: absolute;
+  left: 2.5%;
+  bottom: 8%;
+  transition: 1s all;
+}
+.logo.collapsed {
+  opacity: 0;
+  transform: rotateX(90deg);
+  transform-style: preserve3d;
 }
