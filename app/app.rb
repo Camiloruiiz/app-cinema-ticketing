@@ -14,11 +14,6 @@ get '/' do
   erb :home
 end
 
-get'/form' do
-  @site_title = "Form"
-  erb :form
-end
-
 post '/confirmation' do
   @site_title = "Confirmation"
   Ticketing.new.purchase(params, request.host_with_port)

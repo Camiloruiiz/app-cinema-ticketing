@@ -1,5 +1,8 @@
 <div class="col-lg-12" style="height: 200px">
   <div class="Absolute-Center" style="height: 40px; width: 100px;">
-    <a type="button" class="btn btn-primary" href="/form" target="_self" id="buy_tickets">Buy Tickets</a>
+    <button type="button" class="btn btn-primary btn-lg" id="buy_tickets" data-toggle="modal" data-target="#modal-form">
+      Buy Tickets
+    </button>
   </div>
 </div>
+<%= erb :modalform %>
