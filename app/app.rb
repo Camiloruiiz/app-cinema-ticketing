@@ -7,7 +7,7 @@ require './app/ticketing'
 require './app/config'
 
 SITE_DESCRIPTION = "The best cinema"
-FILM_OF_THE_WEEK = "Inside Out"
+FILM_OF_THE_WEEK = "Sin City"
 
 get '/' do
   @site_title = "Cinelandia"
