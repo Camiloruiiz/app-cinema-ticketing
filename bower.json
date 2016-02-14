@@ -4,7 +4,7 @@
   "authors": [
     "Camiloruiiz <camilorojas@esquemacreativo.com>"
   ],
-  "description": "app sinatra devscola",
+  "description": "App Cinema ticketing devscola on sinatra framework",
   "main": "",
   "moduleType": [],
   "license": "MIT",
