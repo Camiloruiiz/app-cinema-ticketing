@@ -21,6 +21,6 @@ post '/confirmation' do
 end
 
 get '/ticket/:id' do
-  @site_title = "Happy Movie"
+  @site_title = "Ticket to #{RecordsManagement.all[params[:id].to_i][:list_films]}"
   erb :ticket, :locals => {'id' => params[:id], 'records' => RecordsManagement.all}
 end

@@ -28,7 +28,7 @@ describe 'App ticketing cinema' do
       test_incremental.increment_id
       expect(RecordsManagement.new.get_id).to eq(5)
     end
-
+    
     it 'save records in the hash' do
       #Arrange
       params = {
