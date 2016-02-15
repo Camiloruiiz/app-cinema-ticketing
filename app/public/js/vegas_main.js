@@ -1,8 +1,4 @@
-var $body       = $('body'),
-    $characters = $('.characters'),
-    $posters    = $('.characters-poster'),
-    $names      = $('.characters-list a'),
-    $label      = $('.characters-label');
+var $body       = $('body')
 
 var backgrounds = [
     { src: 'img/2.jpg', delay: 6500, video: [
@@ -29,3 +25,10 @@ $body.vegas({
         }
     }
 });
+
+/* ==============================================
+FULL SCREEN
+=============================================== */
+onew = $(window).width();
+oneh = $(window).height(); //- $('#top-nav').height();
+$('.full-screen').height(oneh);

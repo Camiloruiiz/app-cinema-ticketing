@@ -1,4 +1,9 @@
-<div id="confirmation">
-  <p>Hello <%= ticket[:name] %> <%= ticket[:lastname] %>, your ticket to <strong><%= ticket[:list_films] %></strong> It was successfully generated, you will soon receive an email with the details of your purchase.</p>
+<div class="confirmation-box">
+  <div class="confirmation-message">
+    <h3>Hello <%= ticket[:name] %> <%= ticket[:lastname] %>, your ticket to <strong><%= ticket[:list_films] %></strong> It was successfully generated, you will soon receive an email with the details of your purchase.</h3>
+    <div class="confirmation-btns">
+      <a href="/" target="_self" class="btn btn-default">Back to Shop</a>
+      <a href="/ticket/<%= RecordsManagement.all.keys.max.to_i %>" target="_self" class="btn btn-primary">Look your ticket</a>
+    </div>
+  </div>
 </div>
-<a href="/" target="_self">Back to Shop</a>

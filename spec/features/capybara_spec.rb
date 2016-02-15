@@ -18,7 +18,7 @@ describe 'Front-end ticketing Cinema', :type => :feature do
   	fill_in('name', :with => 'Camilo')
   	fill_in('lastname', :with => 'Ruiz')
   	fill_in('mail', :with => 'camilorojas@esquemacreativo.com')
-  	select('Inside Out', :from => 'list_films')
+  	select('Sin City', :from => 'list_films')
   	click_on('send')
 
   	#Assert

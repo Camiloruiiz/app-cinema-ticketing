@@ -126,8 +126,9 @@ h1 span {
   /* Center the item vertically & horizontally */
   position: absolute;
   /* Break it out of the regular flow */
-  bottom: 20px;
-  right: 20px;
+  top: 0;
+  bottom: 0;
+  right: 40px;
   /* Set the bounds in which to center it, relative to its parent/container */
 }
 .movie-of-the-week, .created-by {
@@ -165,4 +166,27 @@ h1 span {
   opacity: 0;
   transform: rotateX(90deg);
   transform-style: preserve3d;
+}
+
+.confirmation-box {
+  background-color: rgba(13, 170, 63, 0.81);
+  padding: 15px 10px;
+  height: 300px;
+  width: 300px;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.confirmation-box h3 {
+  color: #fff;
+  text-align: center;
+}
+
+.confirmation-btns {
+  margin: 20px 19px;
+  position: relative;
 }
