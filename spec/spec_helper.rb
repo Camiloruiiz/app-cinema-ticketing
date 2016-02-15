@@ -1,3 +1,6 @@
+require 'coveralls'
+Coveralls.wear!
+
 require 'capybara/rspec'
 require './app/app'
 Capybara.app = Sinatra::Application
