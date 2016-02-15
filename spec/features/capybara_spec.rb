@@ -23,6 +23,6 @@ describe 'Front-end ticketing Cinema', :type => :feature do
 
   	#Assert
   	expect(page).to have_title "Confirmation"
-  	expect(page).to have_content('Hello Camilo Ruiz, your ticket to Inside Out It was successfully generated, you will soon receive an email with the details of your purchase.')
+  	expect(page).to have_content('Hello Camilo Ruiz, your ticket to Sin City It was successfully generated, you will soon receive an email with the details of your purchase.')
   end
 end
