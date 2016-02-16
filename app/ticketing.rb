@@ -3,7 +3,7 @@ class Ticketing
 
   def purchase(data, hostname)
     ticket = Ticket.new.create(data)
-    id = RecordsManagement.new.save(ticket)
+    id = TicketsMemory.new.save(ticket)
     Notification.new.sendmail(ticket, id, hostname)
   end
 end
@@ -19,7 +19,7 @@ class Ticket
   end
 end
 ## dividir en dos
-class RecordsManagement
+class TicketsMemory
   @@records = {}
 
   def initialize

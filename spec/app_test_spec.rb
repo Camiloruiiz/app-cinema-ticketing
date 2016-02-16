@@ -1,15 +1,15 @@
 describe 'App ticketing cinema' do
-  context 'class "RecordsManagement"' do
+  context 'class "TicketsMemory"' do
     it 'is defined' do
       #Assert
-      expect(RecordsManagement.new.nil?).to eq(false)
+      expect(TicketsMemory.new.nil?).to eq(false)
     end
 
     it 'is initialized whit {0=>"init"}' do
       #Act
-      RecordsManagement.new
+      TicketsMemory.new
       #Assert
-      expect(RecordsManagement.all).to eq({0=>"init"})
+      expect(TicketsMemory.all).to eq({0=>"init"})
     end
 
     it 'the id should increase one by one' do
@@ -22,9 +22,9 @@ describe 'App ticketing cinema' do
         "list_films"=>"Test."
       }
       test_ticket = Ticket.new.create(data)
-      2.times{RecordsManagement.new.save(test_ticket)}
+      2.times{TicketsMemory.new.save(test_ticket)}
       #Assert
-      expect(RecordsManagement.all.keys.max).to eq(2)
+      expect(TicketsMemory.all.keys.max).to eq(2)
     end
 
     it 'save records in the hash' do
@@ -37,9 +37,9 @@ describe 'App ticketing cinema' do
         "list_films"=>"Test."
       }
       #Act
-      RecordsManagement.new.save(data)
+      TicketsMemory.new.save(data)
       #Assert
-      expect(RecordsManagement.all).to eq({
+      expect(TicketsMemory.all).to eq({
         0=>"init",
         1=>{"name"=>"Name Test", "lastname"=>"LastName Test", "mail"=>"test@test.com", "phone"=>"123456", "list_films"=>"Test."},
         2=>{"name"=>"Name Test", "lastname"=>"LastName Test", "mail"=>"test@test.com", "phone"=>"123456", "list_films"=>"Test."},
