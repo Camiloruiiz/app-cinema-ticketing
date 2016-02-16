@@ -35,7 +35,7 @@ describe 'Front-end ticketing Cinema', :type => :feature do
     expect(page).to have_title "Ticket to Sin City"
     expect(page).to have_css('.cardWrap .card.cardLeft .title,.name,.seat,.time')
     within '.seat' do
-      expect(page).to have_content('7 seat')
+      expect(page).to have_content('4 seat')
     end
   end
 end

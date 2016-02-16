@@ -14,24 +14,22 @@ describe 'App ticketing cinema' do
 
     it 'the id should increase one by one' do
       #Arrange
-      test_incremental = RecordsManagement.new
+      data = {
+        "name"=>"Name Test",
+        "lastname"=>"LastName Test",
+        "mail"=>"test@test.com",
+        "phone"=>"123456",
+        "list_films"=>"Test."
+      }
+      test_ticket = Ticket.new.create(data)
+      2.times{RecordsManagement.new.save(test_ticket)}
       #Assert
-      expect(RecordsManagement.new.get_id).to eq(0)
-      test_incremental.increment_id
-      expect(RecordsManagement.new.get_id).to eq(1)
-      test_incremental.increment_id
-      expect(RecordsManagement.new.get_id).to eq(2)
-      test_incremental.increment_id
-      expect(RecordsManagement.new.get_id).to eq(3)
-      test_incremental.increment_id
-      expect(RecordsManagement.new.get_id).to eq(4)
-      test_incremental.increment_id
-      expect(RecordsManagement.new.get_id).to eq(5)
+      expect(RecordsManagement.all.keys.max).to eq(2)
     end
-    
+
     it 'save records in the hash' do
       #Arrange
-      params = {
+      data = {
         "name"=>"Name Test",
         "lastname"=>"LastName Test",
         "mail"=>"test@test.com",
@@ -39,9 +37,13 @@ describe 'App ticketing cinema' do
         "list_films"=>"Test."
       }
       #Act
-      RecordsManagement.new.save(params)
+      RecordsManagement.new.save(data)
       #Assert
-      expect(RecordsManagement.all).to eq({0=>"init", 6=>{"name"=>"Name Test", "lastname"=>"LastName Test", "mail"=>"test@test.com", "phone"=>"123456", "list_films"=>"Test."}})
+      expect(RecordsManagement.all).to eq({
+        0=>"init",
+        1=>{"name"=>"Name Test", "lastname"=>"LastName Test", "mail"=>"test@test.com", "phone"=>"123456", "list_films"=>"Test."},
+        2=>{"name"=>"Name Test", "lastname"=>"LastName Test", "mail"=>"test@test.com", "phone"=>"123456", "list_films"=>"Test."},
+        3=>{"name"=>"Name Test", "lastname"=>"LastName Test", "mail"=>"test@test.com", "phone"=>"123456", "list_films"=>"Test."}})
     end
   end
 

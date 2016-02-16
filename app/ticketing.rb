@@ -21,7 +21,6 @@ end
 ## dividir en dos
 class RecordsManagement
   @@records = {}
-  @@id = 0
 
   def initialize
     @@records[0] = 'init' unless @@records.keys.nil?
@@ -32,15 +31,11 @@ class RecordsManagement
   end
 
   def get_id
-    @@id
-  end
-
-  def increment_id
-    @@id += 1
+    @@records.keys.max
   end
 
   def save(ticket)
-    @@records[increment_id] = ticket
+    @@records[(get_id) + 1] = ticket
     return get_id
   end
 end
