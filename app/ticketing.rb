@@ -1,10 +1,24 @@
 class Ticketing
+  #hacer injection de dependencias
+
   def purchase(data, hostname)
-    id = RecordsManagement.new.save(data)
-    Notification.new.sendmail(data, id, hostname)
+    ticket = Ticket.new.create(data)
+    id = RecordsManagement.new.save(ticket)
+    Notification.new.sendmail(ticket, id, hostname)
   end
 end
 
+class Ticket
+  def initialize
+    @ticket = []
+  end
+
+  def create(data)
+    @ticket = data
+    @ticket
+  end
+end
+## dividir en dos
 class RecordsManagement
   @@records = {}
   @@id = 0
@@ -32,11 +46,11 @@ class RecordsManagement
 end
 
 class Notification
-  def sendmail(data, id, hostname)
+  def sendmail(ticket, id, hostname)
     Pony.mail(
       :from => 'noreply@esquemacreativo.com',
-      :subject => 'Ticket purchase confirmation ' + data[:name],
-      :to => data[:mail],
+      :subject => 'Ticket purchase confirmation ' + ticket[:name],
+      :to => ticket[:mail],
       :body => 'Enter the following link: http://' + hostname + '/ticket/' + id.to_s
       )
   end
