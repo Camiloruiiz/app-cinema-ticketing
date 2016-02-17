@@ -16,7 +16,9 @@ end
 
 post '/confirmation' do
   @site_title = "Confirmation"
-  Ticketing.new.purchase(params, request.host_with_port)
+  storage = TicketsMemory.new
+  sendmail = SendMail.new(request.host_with_port)
+  Ticketing.new.purchase(params, storage, sendmail)
   erb :confirmation , :locals => {'ticket' => params}
 end
 
