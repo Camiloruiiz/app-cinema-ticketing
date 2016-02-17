@@ -1,19 +1,14 @@
 class Ticketing
-  def purchase(data, storage, sendmail)
-    ticket = Ticket.new.create(data)
+  def purchase(data, storage, mailer)
+    ticket = Ticket.new(data)
     id = storage.save(ticket)
-    sendmail.notification(ticket, id)
+    mailer.send(ticket, id,)
   end
 end
 
 class Ticket
-  def initialize
-    @ticket = []
-  end
-
-  def create(data)
+  def initialize(data)
     @ticket = data
-    @ticket
   end
 end
 
@@ -38,17 +33,17 @@ class TicketsMemory
   end
 end
 
-class SendMail
+class Mailer
   def initialize(hostname)
     @hostname = hostname
   end
 
-  def notification(ticket, id)
+  def send(ticket, id, hostname)
     Pony.mail(
       :from => 'noreply@esquemacreativo.com',
       :subject => 'Ticket purchase confirmation ' + ticket[:name],
       :to => ticket[:mail],
-      :body => 'Enter the following link: http://' + @hostname + '/ticket/' + id.to_s
+      :body => 'Enter the following link: http://' + hostname + '/ticket/' + id.to_s
       )
   end
 end
