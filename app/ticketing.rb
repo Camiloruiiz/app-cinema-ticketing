@@ -1,35 +1,46 @@
 class Ticketing
-  def purchase(data, storage, mailer)
-    ticket = Ticket.new(data)
-    id = storage.save(ticket)
-    mailer.send(ticket, id,)
+  def self.purchase(ticket, ledger, mailer)
+    ledger.annotate_sale(ticket)
+    mailer.send(ticket)
   end
 end
 
 class Ticket
-  def initialize(data)
-    @ticket = data
+  attr_reader :id, :name , :lastname, :mail, :phone, :list_films
+
+  def initialize(data, repo)
+    @id = repo.next_id
+    @name, @lastname, @mail, @phone, @list_films = data["name"], data["lastname"], data["mail"], data["phone"], data["list_films"]
+  end
+
+  def ==(other)
+    self.id == other.id
   end
 end
 
-class TicketsMemory
+class TicketsRepo
   @@records = {}
+  @@id = 0
 
-  def initialize
-    @@records[0] = 'init' unless @@records.keys.nil?
+  def self.reset!
+    @@records = {}
+    @@id = 0
   end
 
-  def self.all
-    @@records
+  def all
+    @@records.values
   end
 
-  def get_id
-    @@records.keys.max
+  def next_id
+    @@id += 1
   end
 
-  def save(ticket)
-    @@records[(get_id) + 1] = ticket
-    return get_id
+  def self.find(id)
+    @@records[id.to_i]
+  end
+  def annotate_sale(ticket)
+    id = ticket.id
+    @@records[id] = ticket
   end
 end
 
@@ -38,12 +49,12 @@ class Mailer
     @hostname = hostname
   end
 
-  def send(ticket, id, hostname)
+  def send(ticket)
     Pony.mail(
       :from => 'noreply@esquemacreativo.com',
-      :subject => 'Ticket purchase confirmation ' + ticket[:name],
-      :to => ticket[:mail],
-      :body => 'Enter the following link: http://' + hostname + '/ticket/' + id.to_s
+      :subject => 'Ticket purchase confirmation ' + ticket.name,
+      :to => ticket.mail,
+      :body => 'Enter the following link: http://' + @hostname + '/ticket/' + ticket.id.to_s
       )
   end
 end

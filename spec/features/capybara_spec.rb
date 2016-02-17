@@ -9,7 +9,9 @@ describe 'Front-end ticketing Cinema', :type => :feature do
   end
 
   it 'click in the button purchase, film form, show /confirmation and show ticket in url /ticket with the correct data' do
-  	visit '/' #Arrange
+    #Arrange
+    TicketsRepo.reset!
+    visit '/'
     Pony.override_options = { :via => :test }
 
   	click_on('buy_tickets') #Act
@@ -35,7 +37,7 @@ describe 'Front-end ticketing Cinema', :type => :feature do
     expect(page).to have_title "Ticket to Sin City"
     expect(page).to have_css('.cardWrap .card.cardLeft .title,.name,.seat,.time')
     within '.seat' do
-      expect(page).to have_content('4 seat')
+      expect(page).to have_content('1 seat')
     end
   end
 end

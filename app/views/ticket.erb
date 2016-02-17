@@ -4,15 +4,15 @@
       <span>Landia</span>
     </h1>
     <div class="title">
-      <h2><%= records[id.to_i][:list_films] %></h2>
+      <h2><%= ticket.list_films %></h2>
       <span>movie</span>
     </div>
     <div class="name">
-      <h2><%= records[id.to_i][:name] %></h2>
+      <h2><%= ticket.name %></h2>
       <span>name</span>
     </div>
     <div class="seat" id="seat">
-      <h2><%= id %></h2>
+      <h2><%= ticket.id %></h2>
       <span>seat</span>
     </div>
     <div class="time">
@@ -23,7 +23,7 @@
   <div class="card cardRight">
     <div class="eye"></div>
     <div class="number">
-      <h3><%= id %></h3>
+      <h3><%= ticket.id %></h3>
       <span>seat</span>
     </div>
     <div class="barcode"></div>
