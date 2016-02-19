@@ -1,14 +1,14 @@
 var $body       = $('body')
 
 var backgrounds = [
-    { src: 'img/2.jpg', delay: 6500, video: [
-        'img/intro.mp4',
-        'img/intro.ogv',
-        'img/intro.webm'
+    { src: '../img/2.jpg', delay: 6500, video: [
+        '../img/intro.mp4',
+        '../img/intro.ogv',
+        '../img/intro.webm'
     ] },
-    { src: 'img/1.jpg', valign: 'top' },
-    { src: 'img/2.jpg', valign: 'top' },
-    { src: 'img/3.jpg', valign: 'top' }
+    { src: '../img/1.jpg', valign: 'top' },
+    { src: '../img/2.jpg', valign: 'top' },
+    { src: '../img/3.jpg', valign: 'top' }
 ];
 
 $body.vegas({
