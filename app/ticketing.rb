@@ -40,7 +40,7 @@ class TicketsRepo
     @@records[id] = ticket
   end
 
-  private
+
   def next_id
     @@id += 1
   end
