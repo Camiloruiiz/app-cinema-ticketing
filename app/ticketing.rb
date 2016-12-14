@@ -31,16 +31,18 @@ class TicketsRepo
     @@records.values
   end
 
-  def next_id
-    @@id += 1
-  end
-
   def self.find(id)
     @@records[id.to_i]
   end
+
   def annotate_sale(ticket)
     id = ticket.id
     @@records[id] = ticket
+  end
+
+  private
+  def next_id
+    @@id += 1
   end
 end
 
